@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title> - jsFiddle demo</title>
+  <title></title>
 
   <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
   <script type='text/javascript' src='./audiojs/audio.min.js'></script>
@@ -20,7 +20,6 @@
     left: 300px;
     width: 200px;
     height: 150px;
-    background: white;
     display: block;
 }
 #stress_scene {
@@ -52,7 +51,6 @@ $(document).ready(function(){
                 // Setup the player to autoplay the next track
             var a = audiojs.createAll();
             var audio = a[0];
-            audio.load("./Christmas-Carol-Jingle-Bells.mp3");
             audio.play();
 
             setTimeout(function(){
@@ -84,7 +82,7 @@ $(document).ready(function(){
 <div id="congrats_scene">
 </div>
 <div style="display:none">
-  <audio src="" preload="auto" />
+  <audio src="./Christmas-Carol-Jingle-Bells.mp3" preload="auto" />
 </div>
 </body>
 </html>
