@@ -3,13 +3,13 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title> - jsFiddle demo</title>
-  
+
   <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
   <script type='text/javascript' src='./audiojs/audio.min.js'></script>
-  
-  
-  <style type='text/css'>
-    #button_scene {
+
+
+<style type='text/css'>
+#button_scene {
     background: url("./01.jpg") no-repeat;
     width: 100%;
     height: 600px;
@@ -20,38 +20,49 @@
     left: 300px;
     width: 200px;
     height: 150px;
+    background: white;
+    display: block;
 }
-#conrats_scene {
+#stress_scene {
     background: url("./02a.jpg") no-repeat;
     width: 100%;
     height: 600px;
     display: none;
 }
-  </style>
-  
+#congrats_scene {
+    background: url("./03.jpg") no-repeat;
+    width: 100%;
+    height: 600px;
+    display: none;
+}
+#preload {
+    display: none;
+}
+</style>
 
-
-<script type='text/javascript'>//<![CDATA[ 
+<script type='text/javascript'>//<![CDATA[
 
 $(document).ready(function(){
+    audiojs.events.ready(function() {
+        $('#button_scene a').click(function(e){
+            e.preventDefault();
+            $('#button_scene').hide();
+            $('#stress_scene').show();
 
-audiojs.events.ready(function() {
+                // Setup the player to autoplay the next track
+            var a = audiojs.createAll();
+            var audio = a[0];
+            audio.load("./Christmas-Carol-Jingle-Bells.mp3");
+            audio.play();
 
-$('#button_scene a').click(function(e){
-    e.preventDefault();
-    $('#button_scene').hide();
-    $('#conrats_scene').show();
-
-        // Setup the player to autoplay the next track
-    var a = audiojs.createAll();
-    var audio = a[0];
-    audio.load("./Christmas-Carol-Jingle-Bells.mp3");
-    audio.play();
+            setTimeout(function(){
+                $('#stress_scene').hide();
+                $('#congrats_scene').show();
+            }, 4500);
+        });
+    });
 });
-});
-
-});
- //]]>  
+ //]]>
 
 </script>
 
@@ -59,15 +70,21 @@ $('#button_scene a').click(function(e){
 </head>
 <body>
 
+<div id="preload">
+   <img src="./02a.jpg" width="1" height="1" alt="Image 02" />
+   <img src="./03.jpg" width="1" height="1" alt="Image 03" />
+</div>
+
 <div id="button_scene">
-    <a href="javascript: void(0);">
-        <div id="button"></div>
+    <a id="button" href="javascript: void(0);">
     </a>
 </div>
-<div id="conrats_scene">
+<div id="stress_scene">
+</div>
+<div id="congrats_scene">
 </div>
 <div style="display:none">
-  <audio src="" preload="auto" />  
+  <audio src="" preload="auto" />
 </div>
 </body>
 </html>
